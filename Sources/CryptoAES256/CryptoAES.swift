@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CryptoAES {
+public struct CryptoAES256 {
     private let key: String?
     private var iv: String? = "0123456789101112"
     
@@ -18,7 +18,7 @@ public struct CryptoAES {
 }
 
 // MARK: - Encryption
-extension CryptoAES {
+extension CryptoAES256 {
     public func encryption(_ text: String) -> String? {
         guard let key = self.key else { return "Key not initialized"}
         guard let encryptedString = AES256CBC.encryptString(text, password: key) else {
@@ -47,7 +47,7 @@ extension CryptoAES {
 }
 
 // MARK: - Decryption
-extension CryptoAES {
+extension CryptoAES256 {
     public func decryption(_ text: String) -> String? {
         guard let key = key else { return "Key not initialized"}
         guard let decryptedString = AES256CBC.decryptString(text, password: key) else {
